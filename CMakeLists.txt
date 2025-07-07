@@ -15,6 +15,15 @@ CPMAddPackage(
   SOURCE_DIR "${LIB_DIR}/juce"
 )
 
+CPMAddPackage(
+  NAME Catch2
+  GITHUB_REPOSITORY catchorg/Catch2
+  GIT_TAG v3.8.1
+  VERSION 3.8.1
+  SOURCE_DIR "${LIB_DIR}/catch2"
+)
+
+
 if(MSVC)
     add_compile_options(/Wall /WX)
 else()
@@ -22,3 +31,4 @@ else()
 endif()
 
 add_subdirectory(application)
+add_subdirectory(tests)
