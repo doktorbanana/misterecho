@@ -1,1 +1,8 @@
+# Macos Double Files
 ._*
+
+# Build artifacts
+build/
+
+# Libraries
+libs/
