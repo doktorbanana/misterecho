@@ -20,3 +20,5 @@ if(MSVC)
 else()
     add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 endif()
+
+add_subdirectory(application)
