@@ -14,3 +14,9 @@ CPMAddPackage(
   VERSION 8.0.8
   SOURCE_DIR "${LIB_DIR}/juce"
 )
+
+if(MSVC)
+    add_compile_options(/Wall /WX)
+else()
+    add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+endif()
