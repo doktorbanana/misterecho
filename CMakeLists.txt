@@ -3,10 +3,16 @@ cmake_minimum_required(VERSION 3.22)
 project(MisterEchoStarter)
 
 set(CMAKE_CXX_STANDARD 23)
-
 set(PROJECT_NAME "MisterEcho")
-
+set(PRODUCT_NAME "MisterEcho")
+set(BUNDLE_ID "com.pemaal.misterecho")
+set(COMPANY_NAME "Pemaal")
+set(CURRENT_VERSION "0.1.0")
+set(MAJOR_VERSION 0)
+set(MINOR_VERSION 1)
+set(PATCH_LEVEL 0)
 set(LIB_DIR "${CMAKE_SOURCE_DIR}/libs")
+
 include(cmake/CPM.cmake)
 include(cmake/GithubENV.cmake)
 
