@@ -4,8 +4,11 @@ project(MisterEchoStarter)
 
 set(CMAKE_CXX_STANDARD 23)
 
+set(PROJECT_NAME "MisterEcho")
+
 set(LIB_DIR "${CMAKE_SOURCE_DIR}/libs")
 include(cmake/CPM.cmake)
+include(cmake/GithubENV.cmake)
 
 CPMAddPackage(
   NAME JUCE
