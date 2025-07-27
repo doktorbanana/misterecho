@@ -41,3 +41,8 @@ target_compile_definitions(${PROJECT_NAME}
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0
 )
+
+if(MSVC)
+    # Disable warnings-as-errors for juce_vst3_helper
+    set_target_properties(juce_vst3_helper PROPERTIES COMPILE_OPTIONS "/WX-")
+endif()

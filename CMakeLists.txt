@@ -35,8 +35,6 @@ CPMAddPackage(
 
 if(MSVC)
     add_compile_options(/Wall /WX)
-    # Disable warnings-as-errors for juce_vst3_helper
-    set_target_properties(juce_vst3_helper PROPERTIES COMPILE_OPTIONS "/WX-")
 else()
     add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 endif()
