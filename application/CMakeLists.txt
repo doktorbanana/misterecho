@@ -41,3 +41,9 @@ target_compile_definitions(${PROJECT_NAME}
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0
 )
+
+if(MSVC)
+    target_compile_options(${PROJECT_NAME} 
+        PRIVATE 
+            /SILENCE:CXX23_ALIGNED_STORAGE_DEPRECATION_WARNING)
+endif()
