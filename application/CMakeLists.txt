@@ -43,7 +43,5 @@ target_compile_definitions(${PROJECT_NAME}
 )
 
 if(MSVC)
-    target_compile_options(${PROJECT_NAME} 
-        PRIVATE 
-            /SILENCE:CXX23_ALIGNED_STORAGE_DEPRECATION_WARNING)
+    target_compile_options(juce_vst3_helper PRIVATE /wd4668 /wd5204))
 endif()
