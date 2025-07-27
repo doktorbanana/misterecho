@@ -128,8 +128,9 @@ jobs:
             # Zip Standalone for macOS
             ditto -c -k --keepParent "Standalone/${{ env.PRODUCT_NAME }}.app" "${{ env.ARTIFACT_NAME }}-Standalone.zip"
             # Zip plugins for macOS
-            ditto -c -k --keepParent "VST3/${{ env.PRODUCT_NAME }}.vst3" \
-            "AU/${{ env.PRODUCT_NAME }}.component" "${{ env.ARTIFACT_NAME }}-Plugins.zip"
+            7z a -tzip "${{ env.ARTIFACT_NAME }}-Plugins.zip" \
+            "VST3/${{ env.PRODUCT_NAME }}.vst3" \
+            "AU/${{ env.PRODUCT_NAME }}.component"
           
           elif [ "${{ matrix.name }}" = "Windows" ]; then
             # Zip Standalone for Windows
