@@ -136,7 +136,6 @@ jobs:
           7z a -tzip "${{ env.ARTIFACT_NAME }}-Plugins.zip" \
             "VST3/${{ env.PRODUCT_NAME }}.vst3" \
             "AU/${{ env.PRODUCT_NAME }}.component" \
-            "CLAP/${{ env.PRODUCT_NAME }}.clap"
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
