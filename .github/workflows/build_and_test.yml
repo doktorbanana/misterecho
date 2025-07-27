@@ -123,19 +123,28 @@ jobs:
         run: |
           cd ${{ env.ARTIFACTS_PATH }}
           
-          # Standalone handling per platform
+          # Handling per platform
           if [ "${{ matrix.name }}" = "macOS" ]; then
+            # Zip Standalone for macOS
             ditto -c -k --keepParent "Standalone/${{ env.PRODUCT_NAME }}.app" "${{ env.ARTIFACT_NAME }}-Standalone.zip"
-          elif [ "${{ matrix.name }}" = "Windows" ]; then
-            7z a -tzip "${{ env.ARTIFACT_NAME }}-Standalone.zip" "Standalone/${{ env.PRODUCT_NAME }}.exe"
-          else
-            7z a -tzip "${{ env.ARTIFACT_NAME }}-Standalone.zip" "Standalone/${{ env.PRODUCT_NAME }}"
-          fi
+            # Zip plugins for macOS
+            ditto -c -k --keepParent "VST3/${{ env.PRODUCT_NAME }}.vst3" \
+            "AU/${{ env.PRODUCT_NAME }}.component" "${{ env.ARTIFACT_NAME }}-Plugins.zip"
           
-          # Zip all plugin formats
-          7z a -tzip "${{ env.ARTIFACT_NAME }}-Plugins.zip" \
-            "VST3/${{ env.PRODUCT_NAME }}.vst3" \
-            "AU/${{ env.PRODUCT_NAME }}.component" \
+          elif [ "${{ matrix.name }}" = "Windows" ]; then
+            # Zip Standalone for Windows
+            7z a -tzip "${{ env.ARTIFACT_NAME }}-Standalone.zip" "Standalone/${{ env.PRODUCT_NAME }}.exe"
+            # Zip plugins for Windows
+            7z a -tzip "${{ env.ARTIFACT_NAME }}-Plugins.zip" \
+            "VST3/${{ env.PRODUCT_NAME }}.vst3"
+          
+          else
+            # Zip Standalone for Linux
+            7z a -tzip "${{ env.ARTIFACT_NAME }}-Standalone.zip" "Standalone/${{ env.PRODUCT_NAME }}"
+            # Zip plugins for Linux
+            7z a -tzip "${{ env.ARTIFACT_NAME }}-Plugins.zip" \
+            "VST3/${{ env.PRODUCT_NAME }}.vst3"
+          fi
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
